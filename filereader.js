@@ -19,7 +19,20 @@ function readAndPerformKmp(dirName, pattern) {
                                 throw err
 
                             let text = dataBuffer.toString('utf-8')
-                            resolve(kmp(text, pattern))
+                            resolve(
+                                /**
+                                 * Creating a wrapper here, to inject
+                                 * the name of the file, while not touching 
+                                 * the kmp file at all.
+                                 * Functional Style, bitch!
+                                 */
+                                (function* () {
+                                    for(let i of kmp(text, pattern)) {
+                                        i.atFile = e
+                                        yield i
+                                    }
+                                })()
+                            )
                         } catch (_err) {
                             reject(e)
                         }

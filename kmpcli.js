@@ -4,7 +4,6 @@ const { doKmp } = require("./filereader")
 
 doKmp(process.argv[2], process.argv[3])
 .then((kmpIterableArrayofLotsOfPromies) => {
-    console.log('In kmpclifile')
     kmpIterableArrayofLotsOfPromies.forEach(e => {
         e.then(onfulfilled => {
             for(let searchObj of onfulfilled)
