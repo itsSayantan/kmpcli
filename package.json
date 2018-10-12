@@ -1,0 +1,32 @@
+{
+  "name": "kmpcli",
+  "version": "0.0.1",
+  "description": "A CLI that searches for text inside files, based on KMP algorithm",
+  "main": "kmpcli.js",
+  "bin": {
+    "kmpcli": "kmpcli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsSayantan/kmpcli.git"
+  },
+  "keywords": [
+    "Node",
+    "JS",
+    "Node.JS",
+    "CLI",
+    "KMP",
+    "Knuth-Morris-Pratt",
+    "text",
+    "searching"
+  ],
+  "contributors": [
+    "Sayantan Ghosh <sayantan.ghosh03@gmail.com> (https://github.com/itsSayantan)",
+    "Parnab Sanyal <sanyal.parnab96@gmail.com> (https://github.com/iamparnab)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itsSayantan/kmpcli/issues"
+  },
+  "homepage": "https://github.com/itsSayantan/kmpcli#readme"
+}
