@@ -21,23 +21,42 @@ function kmp(text, pattern) {
         return tmpArray
     }
 
-    return (function* kmp(text, pattern) {
+    return (function* (text, pattern) {
         let tmpArray = computeTempArray(pattern)
-        let i = 0, j = 0
+        /**
+         * Introducing _i which will keep
+         * track of the column number 
+         * from which pattern is matching
+         */
+        let i = 0, j = 0, _i = 0
+        let lineNumber = 1
         while(i < text.length) {
+            if(text.charCodeAt(i) === 10) {
+                lineNumber += 1
+                /**
+                 * Initializing _i = 0, because 
+                 * a new line character has been encountered
+                 */
+                _i = 0
+            }
             if(text[i] === pattern[j]) {
                 i += 1
+                _i += 1
                 j += 1
             }else {
                 if(j !== 0) {
                     j = tmpArray[j - 1]
                 }else {
                     i += 1
+                    _i += 1
                 }
             }
 
             if(j === pattern.length) {
-                yield i - j
+                yield {
+                    atLine: lineNumber,
+                    fromColumn: _i - j
+                }
                 j = 0
             }
         }
