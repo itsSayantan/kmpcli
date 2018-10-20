@@ -11,11 +11,12 @@
     "url": "git+https://github.com/itsSayantan/kmpcli.git"
   },
   "keywords": [
+    "kmpcli",
+    "KMP",
+    "CLI",
     "Node",
     "JS",
     "Node.JS",
-    "CLI",
-    "KMP",
     "Knuth-Morris-Pratt",
     "text",
     "searching"
