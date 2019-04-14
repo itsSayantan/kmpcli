@@ -29,5 +29,9 @@
   "bugs": {
     "url": "https://github.com/itsSayantan/kmpcli/issues"
   },
-  "homepage": "https://github.com/itsSayantan/kmpcli#readme"
+  "homepage": "https://github.com/itsSayantan/kmpcli#readme",
+  "dependencies": {
+    "rxjs": "^6.4.0",
+    "rxjs-compat": "^6.4.0"
+  }
 }

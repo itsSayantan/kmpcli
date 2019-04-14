@@ -38,6 +38,8 @@ function kmp(text, pattern) {
                  * a new line character has been encountered
                  */
                 _i = 0
+                i += 1
+                continue
             }
             if(text[i] === pattern[j]) {
                 i += 1
@@ -57,7 +59,7 @@ function kmp(text, pattern) {
                     atLine: lineNumber,
                     fromColumn: _i - j
                 }
-                j = 0
+                j = tmpArray[j - 1]
             }
         }
     })(text, pattern)
