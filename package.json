@@ -1,6 +1,6 @@
 {
   "name": "kmpcli",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "A CLI that searches for text inside files, based on KMP algorithm",
   "main": "kmpcli.js",
   "bin": {
