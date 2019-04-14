@@ -3,7 +3,7 @@
 const { doKmp } = require('./kmpMiddleware')
 const { view } = require('./viewHandler')
 const Rxjs = require('rxjs')
-const fs = require('fs')
+const fs = require('graceful-fs')
 const path = require('path')
 const absolutePathGenerator = new Rxjs.BehaviorSubject(null)
 let showDetailed = false

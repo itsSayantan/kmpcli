@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('graceful-fs')
 const { kmp } = require('./kmp')
 
 function readAndPerformKmp(fileName, pattern) {
@@ -26,7 +26,7 @@ function readAndPerformKmp(fileName, pattern) {
                     )
                 } catch (_err) {
                     console.log(_err)
-                    reject(e)
+                    reject(_err)
                 }
             })
         }).then(e => {
