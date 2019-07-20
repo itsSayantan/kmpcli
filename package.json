@@ -1,6 +1,6 @@
 {
   "name": "kmpcli",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A CLI that searches for text inside files, based on KMP algorithm",
   "main": "kmpcli.js",
   "bin": {
@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/itsSayantan/kmpcli#readme",
   "dependencies": {
-    "graceful-fs": "^4.1.15",
-    "rxjs": "^6.4.0"
+    "graceful-fs": "^4.1.15"
   }
 }
