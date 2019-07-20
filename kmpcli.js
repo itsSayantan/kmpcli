@@ -2,10 +2,10 @@
 
 const { doKmp } = require('./kmpMiddleware')
 const { view } = require('./viewHandler')
-const Rxjs = require('rxjs')
+const EventEmitter = require('events')
 const fs = require('graceful-fs')
 const path = require('path')
-const absolutePathGenerator = new Rxjs.BehaviorSubject(null)
+const absolutePathGenerator = new EventEmitter()
 let showDetailed = false
 const processArgs = process.argv
 
@@ -50,7 +50,7 @@ if (location.trim() === "" || text.trim() === "") {
     console.log('\x1b[31m%s\x1b[0m', `ERR: INVALID_INPUT: make sure the location and text entered are valid`)
     return
 } else {
-    absolutePathGenerator.subscribe(location => {
+    absolutePathGenerator.on('kmpEmitter', location => {
         if (!location) return
         doKmp(location, text)
             .then((searchDetails) => {
@@ -65,20 +65,20 @@ if (location.trim() === "" || text.trim() === "") {
             })
     })
 }
-function getPath(basename) {
-    fs.readdir(basename, (err, files) => {
-        if (err)
-            return
-        else {
-            files.forEach(file => {
-                const fileOrFolderPath = path.join(basename, file)
-                if (fs.lstatSync(fileOrFolderPath).isDirectory())
-                    getPath(fileOrFolderPath)
-                else {
-                    absolutePathGenerator.next(fileOrFolderPath)
-                }
-            })
-        }
-    })
-}
-getPath(location)
+(function getPath(basename) {
+        fs.readdir(basename, (err, files) => {
+            if (err)
+                return
+            else {
+                files.forEach(file => {
+                    const fileOrFolderPath = path.join(basename, file)
+                    if (fs.lstatSync(fileOrFolderPath).isDirectory())
+                        getPath(fileOrFolderPath)
+                    else {
+                        absolutePathGenerator.emit('kmpEmitter', fileOrFolderPath)
+                    }
+                })
+            }
+        })
+    }
+)(location)
